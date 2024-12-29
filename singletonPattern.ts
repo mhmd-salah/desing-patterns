@@ -16,7 +16,6 @@ class Singleton {
   public setData(data: object) {
     this.data = data;
   }
-
 }
 
 const singleton1 = Singleton.getInstance();
