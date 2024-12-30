@@ -4,12 +4,13 @@ interface Observer {
 
 interface Subject {
   addObserver(observer: Observer): void;
-  remoteObserver(observer: Observer): void;
+  removeObserver(observer: Observer): void;
   notifyObservers(): void;
 }
 
 class StateManager implements Subject {
   private observers: Observer[] = [];
+
   private state: string;
 
   constructor(state: string) {
@@ -19,7 +20,7 @@ class StateManager implements Subject {
   addObserver(observer: Observer): void {
     this.observers.push(observer);
   }
-  remoteObserver(observer: Observer): void {
+  removeObserver(observer: Observer): void {
     this.observers.filter((o) => o !== observer);
   }
   notifyObservers(): void {
@@ -56,3 +57,4 @@ stateManager.addObserver(concreteObsOne)
 stateManager.addObserver(concreteObsTwo)
 
 stateManager.setState("create header")
+stateManager.setState("create footer")
